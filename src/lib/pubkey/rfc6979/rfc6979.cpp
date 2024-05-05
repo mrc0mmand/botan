@@ -27,8 +27,15 @@ RFC6979_Nonce_Generator::RFC6979_Nonce_Generator(std::string_view hash, const Bi
 RFC6979_Nonce_Generator::~RFC6979_Nonce_Generator() = default;
 
 const BigInt& RFC6979_Nonce_Generator::nonce_for(const BigInt& m) {
-   m.serialize_to(std::span{m_rng_in}.subspan(m_rlen));
-   m_hmac_drbg->clear();
+   std::vector<uint8_t> m_bytes(m_rlen);
+   m.serialize_to(m_bytes);
+   return this->nonce_for(m_bytes);
+}
+
+const BigInt& RFC6979_Nonce_Generator::nonce_for(std::span<const uint8_t> m_bytes) {
+   BOTAN_ARG_CHECK(m_bytes.size() == m_rlen, "Invalid m encoding");
+   copy_mem(&m_rng_in[m_rlen], m_bytes.data(), m_rlen);
+
    m_hmac_drbg->initialize_with(m_rng_in.data(), m_rng_in.size());
 
    do {

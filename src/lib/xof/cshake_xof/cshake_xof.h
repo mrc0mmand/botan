@@ -20,7 +20,7 @@ namespace Botan {
 /**
  * Base class for cSHAKE-based XOFs
  */
-class BOTAN_TEST_API cSHAKE_XOF : public XOF {
+class cSHAKE_XOF : public XOF {
    protected:
       /**
        * Defines a concrete instance of a cSHAKE XOF.
@@ -65,7 +65,7 @@ class BOTAN_TEST_API cSHAKE_XOF : public XOF {
  * customizable SHAKE-128 as defined in NIST SP.800-185
  * This class is meant for internal use only and is not exposed via XOF::create().
  */
-class BOTAN_TEST_API cSHAKE_128_XOF final : public cSHAKE_XOF {
+class cSHAKE_128_XOF final : public cSHAKE_XOF {
    public:
       cSHAKE_128_XOF(std::vector<uint8_t> function_name) : cSHAKE_XOF(256, std::move(function_name)) {}
 
@@ -84,7 +84,7 @@ class BOTAN_TEST_API cSHAKE_128_XOF final : public cSHAKE_XOF {
  * customizable SHAKE-256 as defined in NIST SP.800-185
  * This class is meant for internal use only and is not exposed via XOF::create().
  */
-class BOTAN_TEST_API cSHAKE_256_XOF final : public cSHAKE_XOF {
+class cSHAKE_256_XOF final : public cSHAKE_XOF {
    public:
       cSHAKE_256_XOF(std::vector<uint8_t> function_name) : cSHAKE_XOF(512, std::move(function_name)) {}
 

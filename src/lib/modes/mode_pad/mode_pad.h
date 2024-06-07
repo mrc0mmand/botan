@@ -23,7 +23,7 @@ namespace Botan {
 * a padding mode for CBC, which happens to consume the last
 * two block (and requires use of the block cipher).
 */
-class BOTAN_TEST_API BlockCipherModePaddingMethod {
+class BOTAN_FUZZER_API BlockCipherModePaddingMethod {
    public:
       /**
       * Get a block cipher padding mode by name (eg "NoPadding" or "PKCS7")
@@ -67,7 +67,7 @@ class BOTAN_TEST_API BlockCipherModePaddingMethod {
 /**
 * PKCS#7 Padding
 */
-class BOTAN_TEST_API PKCS7_Padding final : public BlockCipherModePaddingMethod {
+class BOTAN_FUZZER_API PKCS7_Padding final : public BlockCipherModePaddingMethod {
    public:
       void add_padding(secure_vector<uint8_t>& buffer, size_t final_block_bytes, size_t block_size) const override;
 
@@ -81,7 +81,7 @@ class BOTAN_TEST_API PKCS7_Padding final : public BlockCipherModePaddingMethod {
 /**
 * ANSI X9.23 Padding
 */
-class BOTAN_TEST_API ANSI_X923_Padding final : public BlockCipherModePaddingMethod {
+class BOTAN_FUZZER_API ANSI_X923_Padding final : public BlockCipherModePaddingMethod {
    public:
       void add_padding(secure_vector<uint8_t>& buffer, size_t final_block_bytes, size_t block_size) const override;
 
@@ -95,7 +95,7 @@ class BOTAN_TEST_API ANSI_X923_Padding final : public BlockCipherModePaddingMeth
 /**
 * One And Zeros Padding (ISO/IEC 9797-1, padding method 2)
 */
-class BOTAN_TEST_API OneAndZeros_Padding final : public BlockCipherModePaddingMethod {
+class BOTAN_FUZZER_API OneAndZeros_Padding final : public BlockCipherModePaddingMethod {
    public:
       void add_padding(secure_vector<uint8_t>& buffer, size_t final_block_bytes, size_t block_size) const override;
 
@@ -109,7 +109,7 @@ class BOTAN_TEST_API OneAndZeros_Padding final : public BlockCipherModePaddingMe
 /**
 * ESP Padding (RFC 4303)
 */
-class BOTAN_TEST_API ESP_Padding final : public BlockCipherModePaddingMethod {
+class BOTAN_FUZZER_API ESP_Padding final : public BlockCipherModePaddingMethod {
    public:
       void add_padding(secure_vector<uint8_t>& buffer, size_t final_block_bytes, size_t block_size) const override;
 

@@ -22,7 +22,7 @@ constexpr size_t ED448_LEN = 57;
  * The point is represented in projective coordinates (X, Y, Z).
  * All operations are constant time.
  */
-class BOTAN_TEST_API Ed448Point {
+class Ed448Point {
    public:
       /// Decode a point from its 57-byte encoding (RFC 8032 5.2.3)
       static Ed448Point decode(std::span<const uint8_t, ED448_LEN> enc);
@@ -81,7 +81,7 @@ Ed448Point operator*(const Scalar448& lhs, const Ed448Point& rhs);
 /**
  * @brief Create a public key point from a secret key (RFC 8032 5.2.5)
  */
-BOTAN_TEST_API std::array<uint8_t, ED448_LEN> create_pk_from_sk(std::span<const uint8_t, ED448_LEN> sk);
+std::array<uint8_t, ED448_LEN> create_pk_from_sk(std::span<const uint8_t, ED448_LEN> sk);
 
 /**
  * @brief Sign a message using a keypair (RFC 8032 5.2.6)
@@ -93,7 +93,7 @@ BOTAN_TEST_API std::array<uint8_t, ED448_LEN> create_pk_from_sk(std::span<const 
  * @param msg the message to sign
  * @return the signature
  */
-BOTAN_TEST_API std::array<uint8_t, 114> sign_message(std::span<const uint8_t, ED448_LEN> sk,
+std::array<uint8_t, 114> sign_message(std::span<const uint8_t, ED448_LEN> sk,
                                                      std::span<const uint8_t, ED448_LEN> pk,
                                                      bool f,
                                                      std::span<const uint8_t> context,
@@ -111,11 +111,11 @@ BOTAN_TEST_API std::array<uint8_t, 114> sign_message(std::span<const uint8_t, ED
  * @throw Decoding_Error if the public key or signature is malformed
  * @return true if the signature is valid
  */
-BOTAN_TEST_API bool verify_signature(std::span<const uint8_t, ED448_LEN> pk,
-                                     bool phflag,
-                                     std::span<const uint8_t> context,
-                                     std::span<const uint8_t> sig,
-                                     std::span<const uint8_t> msg);
+bool verify_signature(std::span<const uint8_t, ED448_LEN> pk,
+                      bool phflag,
+                      std::span<const uint8_t> context,
+                      std::span<const uint8_t> sig,
+                      std::span<const uint8_t> msg);
 
 }  // namespace Botan
 

@@ -97,7 +97,7 @@ enum class LMOTS_Algorithm_Type : uint32_t {
  *
  * See RFC 8554 Section 4.1.
  */
-class BOTAN_TEST_API LMOTS_Params {
+class LMOTS_Params {
    public:
       /**
        * @brief Create the LM-OTS parameters from a known algorithm type.
@@ -175,7 +175,7 @@ class BOTAN_TEST_API LMOTS_Params {
 /**
  * @brief Representation of a LM-OTS signature.
  */
-class BOTAN_TEST_API LMOTS_Signature {
+class LMOTS_Signature {
    public:
       /**
        * @brief Parse a LM-OTS signature.
@@ -219,7 +219,7 @@ class BOTAN_TEST_API LMOTS_Signature {
  * @brief Base class for LMOTS private and public key. Contains the parameters for
  *        the specific OTS instance
  */
-class BOTAN_TEST_API OTS_Instance {
+class OTS_Instance {
    public:
       /**
        * @brief Constructor storing the specific OTS parameters
@@ -254,7 +254,7 @@ class BOTAN_TEST_API OTS_Instance {
  * Contains the OTS params, I, q, the secret LMS seed and its derived
  * secret chain inputs (x[] in RFC 8554 4.2)
  */
-class BOTAN_TEST_API LMOTS_Private_Key : public OTS_Instance {
+class LMOTS_Private_Key : public OTS_Instance {
    public:
       /**
        * @brief Derive a LMOTS private key for a given @p seed.
@@ -303,7 +303,7 @@ class BOTAN_TEST_API LMOTS_Private_Key : public OTS_Instance {
  *
  * u32str(type) || I || u32str(q) || K
  */
-class BOTAN_TEST_API LMOTS_Public_Key : public OTS_Instance {
+class LMOTS_Public_Key : public OTS_Instance {
    public:
       /**
        * @brief Derivivation of an LMOTS public key using an LMOTS_Private_Key as defined
@@ -336,10 +336,10 @@ class BOTAN_TEST_API LMOTS_Public_Key : public OTS_Instance {
  *
  * Defined in RFC 8554 4.6 - Algorithm 4b
  */
-BOTAN_TEST_API LMOTS_K lmots_compute_pubkey_from_sig(const LMOTS_Signature& sig,
-                                                     const LMS_Message& msg,
-                                                     const LMS_Identifier& identifier,
-                                                     LMS_Tree_Node_Idx q);
+LMOTS_K lmots_compute_pubkey_from_sig(const LMOTS_Signature& sig,
+                                      const LMS_Message& msg,
+                                      const LMS_Identifier& identifier,
+                                      LMS_Tree_Node_Idx q);
 
 }  // namespace Botan
 

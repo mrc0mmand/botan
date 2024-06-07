@@ -85,7 +85,7 @@ using LMS_Signature_Bytes = Strong<std::vector<uint8_t>, struct LMS_Signature_By
  *
  * See RFC 8554 Section 5.1.
  */
-class BOTAN_TEST_API LMS_Params {
+class LMS_Params {
    public:
       /**
        * @brief Create the LMS parameters from a known algorithm type.
@@ -147,7 +147,7 @@ class BOTAN_TEST_API LMS_Params {
  * @brief Base class for LMS private and public key. Contains public data associated with this
  *        LMS instance.
  */
-class BOTAN_TEST_API LMS_Instance {
+class LMS_Instance {
    public:
       /**
        * @brief Constructor storing the provided LMS data.
@@ -186,7 +186,7 @@ class LMS_PublicKey;
  * Contains the secret seed used for OTS key derivation
  * as described in RFC 8554 Appendix A.
  */
-class BOTAN_TEST_API LMS_PrivateKey : public LMS_Instance {
+class LMS_PrivateKey : public LMS_Instance {
    public:
       /**
        * @brief Construct storing the LMS instance data and the secret seed
@@ -221,7 +221,7 @@ class LMS_Signature;
  * Format according to RFC 8554:
  * u32str(type) || u32str(otstype) || I || T[1]
  */
-class BOTAN_TEST_API LMS_PublicKey : public LMS_Instance {
+class LMS_PublicKey : public LMS_Instance {
    public:
       /**
        * @brief Parse a public LMS key.
@@ -287,7 +287,7 @@ class BOTAN_TEST_API LMS_PublicKey : public LMS_Instance {
  *
  * Contains a method for secure signature parsing.
  */
-class BOTAN_TEST_API LMS_Signature {
+class LMS_Signature {
    public:
       /**
        * @brief Parse the bytes of a lms signature into a LMS Signature object
